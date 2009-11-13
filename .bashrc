@@ -33,15 +33,21 @@ if [ "$PS1" ]; then
     alias genpasswd='dd if=/dev/random ibs=6 count=1 2>/dev/null | openssl base64'
     alias conflicts="find . -type f \! -name '*.o' -print0 | xargs -0 grep -l '<<<<<<'"
 
+    # It still cracks me out why there are systems without a native rgrep.
+    if [ ! command -v rgrep &> /dev/null ]; then
+        alias rgrep="grep -r"
+    fi
+
     # Aliases for Subversion
     alias sgrep='rgrep --exclude "*.svn*"'
     alias slock='svn lock -m ""'
     alias smod='svn status | grep ^M'
     alias svn-affected-files='svn log --verbose -r'
+
     alias screen='TERM=screen screen'
 
     # set a fancy prompt
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='\u@\h:\w\$ '
 
     # If this is an xterm set the title to user@host:dir
     case $TERM in
