@@ -21,7 +21,7 @@ svnrm () {
 }
 
 svnadd () {
-        svn add $* && svn commit $*
+    svn add $* && svn commit $*
 }
 
 alias screen='TERM=screen screen'
@@ -47,14 +47,29 @@ fi
 
 if [ "$UNAME" = Darwin ]; then
     # put MacPorts on the environment
-    test -x /opt/local && {
-        PORTS=/opt/local
-
+    PORTS="/opt/local"
+    if [ -x $PORTS ]; then
         # setup the PATH and MANPATH
         PATH="$PORTS/bin:$PORTS/sbin:$PATH"
         MANPATH="$PORTS/share/man:$MANPATH"
-    }  
+    
+        alias ls="$PORTS/bin/gls --color"
+    fi
+else
+    alias ls="ls --color"
 fi
+
+# detect interactive shell
+case "$-" in
+    *i*) INTERACTIVE=1 ;;
+    *) unset INTERACTIVE ;;
+esac
+ 
+# detect login shell
+case "$0" in
+    -*) LOGIN=1 ;;
+    *) unset LOGIN ;;
+esac
 
 if [ "$PS1" ]; then
 
@@ -91,5 +106,8 @@ fi
 export HISTFILE=$HOME/.history/`date +%Y%m%d`.hist
 export HISTSIZE=100000
 
-uname -npsr
-uptime
+test -n "$INTERACTIVE" -a -n "$LOGIN" && {
+    # show some useful information on login
+    uname -npsr
+    uptime
+}
