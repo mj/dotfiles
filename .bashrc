@@ -1,3 +1,13 @@
+# ~martin/.bashrc
+#
+# Heavily inspired by Debian's default .bashrc, http://github.com/rtomayko/dotfiles,
+# http://hocuspokus.net/2008/01/a-better-ls-for-mac-os-x and assorted other
+# .bashrc files over the web.
+#
+
+# I don't care about non-interactive shells
+[ -z "$PS1" ] && return
+
 UNAME=$(uname)
 
 export VISUAL=joe
@@ -54,59 +64,65 @@ if [ "$UNAME" = Darwin ]; then
         MANPATH="$PORTS/share/man:$MANPATH"
     
         alias ls="$PORTS/bin/gls --color"
+        alias dircolors="$PORTS/bin/gdircolors"
     fi
 else
     alias ls="ls --color"
 fi
 
-# detect interactive shell
-case "$-" in
-    *i*) INTERACTIVE=1 ;;
-    *) unset INTERACTIVE ;;
-esac
- 
 # detect login shell
 case "$0" in
     -*) LOGIN=1 ;;
     *) unset LOGIN ;;
 esac
 
-if [ "$PS1" ]; then
 
-    if [ -n "$(command -v dircolors)" ]; then
-        eval `dircolors -b`
-    fi
-
-    # set a fancy prompt
-    PS1='\u@\h:\w\$ '
-
-    # If this is an xterm set the title to user@host:dir
-    case $TERM in
-    xterm*)
-        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
-        ;;
-    *)
-        ;;
-    esac
-
-    # Initialize Keychain
-    if [ -f "~/.keychain/${HOSTNAME}-sh" ]; then
-        keychain -q id_rsa id_dsa
-        source ~/.keychain/${HOSTNAME}-sh
-    fi
-    
-    test -f "/etc/bash_completion" && source /etc/bash_completion
+if [ -n "$(command -v dircolors)" ]; then
+    eval `dircolors -b`
 fi
 
-#
-# Daily history files
-#
-# http://bradchoate.com/weblog/2006/05/19/daily-history-files-for-bash
-#
-export HISTFILE=$HOME/.history/`date +%Y%m%d`.hist
-export HISTSIZE=100000
+# set a fancy prompt
+PS1='\u@\h:\w\$ '
 
-test -n "$INTERACTIVE" -a -n "$LOGIN" && {
+# If this is an xterm set the title to user@host:dir
+case $TERM in
+xterm*)
+    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+    ;;
+*)
+    ;;
+esac
+
+# Initialize Keychain
+if [ -f "~/.keychain/${HOSTNAME}-sh" ]; then
+    keychain -q id_rsa id_dsa
+    source ~/.keychain/${HOSTNAME}-sh
+fi
+
+test -f "/etc/bash_completion" && source /etc/bash_completion
+
+#
+# Settings regarding the history file
+#
+
+# Don't put duplicate lines in the history file
+export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
+
+# Make sure the same location for the history file is used all the time.
+export HISTFILE=$HOME/.bash_history
+
+# Set some sane limits for the history size
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+#
+# MOTD-type settings
+#
+
+test -n "$LOGIN" && {
     # show some useful information on login
     uname -npsr
     uptime
