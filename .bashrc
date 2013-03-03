@@ -11,6 +11,7 @@
 UNAME=$(uname)
 
 export VISUAL=joe
+export LANG=en_US.UTF-8
 
 mkcd() {
     test -z "$1" && return
@@ -71,9 +72,6 @@ if [ "$UNAME" = Darwin ]; then
         # setup the PATH and MANPATH
         PATH="$PORTS/bin:$PORTS/sbin:$PATH"
         MANPATH="$PORTS/share/man:$MANPATH"
-    
-        alias ls="$PORTS/bin/gls --color"
-        alias dircolors="$PORTS/bin/gdircolors"
     fi
 else
     alias ls="ls --color"
