@@ -15,8 +15,8 @@ export VISUAL=joe
 mkcd() {
     test -z "$1" && return
 
-	mkdir -p "$1"
-	cd "$1"
+    mkdir -p "$1"
+    cd "$1"
 }
 
 # handy aliases for SVN
