@@ -37,10 +37,19 @@ svnadd () {
 alias screen='TERM=screen screen'
 alias conflicts="find . -type f \! -name '*.o' -print0 | xargs -0 grep -l '<<<<<<'"
 alias ll='ls -l'
-alias la='ls -A'
+alias la='ls -lA'
 alias lal='ls -la'
 alias l='ls -CF'
+alias lsd='ll | grep ^d'
 alias genpasswd='dd if=/dev/random ibs=6 count=1 2>/dev/null | openssl base64'
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en1"
+alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
+
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
 
 HAVE_RGREP=$(command -v rgrep)
 if [ -z "$HAVE_RGREP" ]; then
