@@ -73,3 +73,8 @@ then
     alias mtr="sudo mtr"
     alias subl="subl -n"
 fi
+
+mkcd() {
+    test -z "$1" && return
+    mkdir -p "$1" && cd "$1"
+}
