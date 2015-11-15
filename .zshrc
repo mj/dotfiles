@@ -58,6 +58,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/X
 source $ZSH/oh-my-zsh.sh
 
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 export EDITOR="joe"
 
