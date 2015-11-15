@@ -53,6 +53,9 @@ then
 fi
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/go/bin"
+
+test -d "/var/lib/gems/1.8/bin" && PATH="/var/lib/gems/1.8/bin:$PATH"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
