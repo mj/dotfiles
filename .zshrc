@@ -71,10 +71,14 @@ export EDITOR="joe"
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+alias rgrep="grep -r"
+
 if [[ $OSTYPE == darwin* ]]
 then
     alias mtr="sudo mtr"
     alias subl="subl -n"
+    alias dl="cd ~/Downloads"
+    alias dt="cd ~/Desktop"
 fi
 
 mkcd() {
