@@ -71,6 +71,9 @@ export EDITOR="joe"
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
+
 alias rgrep="grep -r"
 
 if [[ $OSTYPE == darwin* ]]
