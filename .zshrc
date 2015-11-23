@@ -3,6 +3,10 @@ export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="mj"
 
+setopt PROMPT_CR
+setopt PROMPT_SP
+export PROMPT_EOL_MARK=""
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
