@@ -83,7 +83,7 @@ prompt_mj_main() {
     [[ $UID -eq 0 ]] && prompt_segment $PRIMARY_FG default "%{%F{red}%}$LIGHTNING "
 
     # user@host
-    prompt_segment $PRIMARY_FG default "%(!.%{%F{yellow}%}.)%n@%m "
+    prompt_segment NONE default "%(!.%{%F{yellow}%}.)%n@%m "
 
     # CWD
     prompt_segment cyan $PRIMARY_FG ' %~ '
