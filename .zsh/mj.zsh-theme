@@ -88,7 +88,8 @@ prompt_mj_main() {
     # CWD
     prompt_segment cyan $PRIMARY_FG ' %~ '
 
-    prompt_git
+    [[ $PWD == *"/mnt/"* ]] || prompt_git
+
     prompt_end
 }
 
