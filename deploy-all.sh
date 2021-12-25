@@ -2,7 +2,7 @@
 
 PREFIX=$HOME
 
-for file in .bash_profile .bashrc .gitconfig .inputrc .screenrc .wgetrc .zshrc joerc .vimrc
+for file in .bash_profile .bashrc .gitconfig .inputrc .screenrc .wgetrc .zshrc joerc .vimrc .p10k.zsh
 do
 	cp -va $file $PREFIX/$file
 done
