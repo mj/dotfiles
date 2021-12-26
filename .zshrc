@@ -67,7 +67,7 @@ plugins=(gitfast)
 
 if [[ $OSTYPE == darwin* ]]
 then
-    plugins+="osx"
+    plugins+="macos"
     plugins+="brew"
 fi
 
