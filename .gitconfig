@@ -3,7 +3,7 @@
 	email = martin@divbyzero.net
 
 [core]
-	editor = joe
+	editor = vim 
 
 [alias]
 	pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
