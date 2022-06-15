@@ -63,7 +63,7 @@ test -f $ZSH_CUSTOM/zshrc.local && . $ZSH_CUSTOM/zshrc.local
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(gitfast)
+plugins=(git gitfast fzf)
 
 if [[ $OSTYPE == darwin* ]]
 then
