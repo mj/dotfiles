@@ -93,7 +93,6 @@ alias rgrep="grep -r"
 if [[ $OSTYPE == darwin* ]]
 then
     alias mtr="sudo mtr"
-    alias subl="subl -n"
     alias dl="cd ~/Downloads"
     alias dt="cd ~/Desktop"
     alias gosrc="cd ~/go/src/github.com/mj"
