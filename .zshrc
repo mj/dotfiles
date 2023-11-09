@@ -64,11 +64,16 @@ if [[ $OSTYPE == darwin* ]]
 then
     plugins+="macos"
     plugins+="brew"
+    plugins+="terraform"
 fi
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/go/bin:/opt/homebrew/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/go/bin"
 
-test -d "/var/lib/gems/1.8/bin" && PATH="/var/lib/gems/1.8/bin:$PATH"
+if [[ $OSTYPE == darwin* ]]
+then
+    test -d /opt/homebrew/bin && PATH="$PATH:/opt/homebrew/bin"
+    test -d /opt/puppetlabs/puppet/bin && PATH="$PATH:/opt/puppetlabs/puppet/bin"
+fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
