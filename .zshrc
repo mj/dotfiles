@@ -75,20 +75,12 @@ then
     test -d /opt/puppetlabs/puppet/bin && PATH="$PATH:/opt/puppetlabs/puppet/bin"
 fi
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 export EDITOR="vim"
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
@@ -110,4 +102,3 @@ mkcd() {
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
