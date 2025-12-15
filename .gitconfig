@@ -1,9 +1,13 @@
+[color]
+	ui = auto
+
 [user]
 	name  = Martin Jansen
 	email = martin@divbyzero.net
 
 [core]
-	editor = vim 
+	editor = code -n -w
+	pager = diff-so-fancy | less --tabs=4 -RFX
 
 [alias]
 	pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
